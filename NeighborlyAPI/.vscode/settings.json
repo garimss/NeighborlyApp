@@ -1,0 +1,14 @@
+{
+    "azureFunctions.deploySubpath": "NeighborlyAPI",
+    "azureFunctions.scmDoBuildDuringDeployment": true,
+    "azureFunctions.pythonVenv": ".venv2",
+    "azureFunctions.projectLanguage": "Python",
+    "azureFunctions.projectRuntime": "~3",
+    "debug.internalConsoleOptions": "neverOpen",
+    "python.pythonPath": "C:\\Users\\Garima\\.msvscode.hdinsight\\hdinsightJupyter\\Scripts\\python.exe",
+    "jupyter.jupyterLaunchTimeout": 240000,
+    "appService.defaultWebAppToDeploy": "/subscriptions/f0087ea9-5776-46d6-99b0-6b3f63f86da8/resourceGroups/Coud-Nanodegree/providers/Microsoft.Web/sites/NeighborlyAPI",
+    "appService.deploySubpath": "NeighborlyFrontEnd",
+    "azureFunctions.projectSubpath": "NeighborlyAPI",
+    "DockerRun.DisableDockerrc": true
+}
