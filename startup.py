@@ -1,0 +1,1 @@
+from NeighborlyFrontEnd.application import app

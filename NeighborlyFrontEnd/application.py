@@ -98,7 +98,7 @@ def add_ad_request():
         'price': request.form['price']
     }
     wurl = urlopen(settings.API_URL + '/getAdvertisement?id=' + id)
-    response = requests.post(wurl, json=json.dumps(req_data))
+    response = requests.post(wurl, json.dumps(req_data))
     return redirect(url_for('home'))
 
 @app.route('/ad/update/<id>', methods=['POST'])
@@ -115,7 +115,7 @@ def update_ad_request(id):
 
 
     wurl= settings.API_URL + '/updateAdvertisement?id=' + id
-    response = requests.put(wurl, json=json.dumps(req_data))
+    response = requests.put(wurl, json.dumps(req_data))
     return redirect(url_for('home'))
 
 @app.route('/ad/delete/<id>', methods=['POST'])
