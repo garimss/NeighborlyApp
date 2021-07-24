@@ -1,4 +1,5 @@
 {
+    "python.pythonPath": "C:\\Users\\Garima\\.virtualenvs\\NeighborlyFrontEnd_copy-Tgy1rP30\\Scripts\\python.exe",
     "azureFunctions.deploySubpath": ".",
     "azureFunctions.scmDoBuildDuringDeployment": true,
     "azureFunctions.pythonVenv": ".venv",
@@ -39,3 +40,4 @@
     "appService.defaultWebAppToDeploy": "/subscriptions/f0087ea9-5776-46d6-99b0-6b3f63f86da8/resourceGroups/Coud-nanodegree/providers/Microsoft.Web/sites/Neighborlywebapplication",
     "appService.deploySubpath": "."
 }
+
