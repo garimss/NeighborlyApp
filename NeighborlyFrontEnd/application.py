@@ -97,8 +97,8 @@ def add_ad_request():
         'imgUrl': request.form['imgUrl'],
         'price': request.form['price']
     }
-    wurl = urlopen(settings.API_URL + '/getAdvertisement?id=' + id)
-    response = requests.post(wurl, json.dumps(req_data))
+    #wurl = urlopen(settings.API_URL + '/getAdvertisement?id=' + id)
+    response = requests.post(settings.API_URL + '/getAdvertisement?id=' + id, json.dumps(req_data))
     return redirect(url_for('home'))
 
 @app.route('/ad/update/<id>', methods=['POST'])
@@ -114,14 +114,14 @@ def update_ad_request(id):
     }
 
 
-    wurl= settings.API_URL + '/updateAdvertisement?id=' + id
-    response = requests.put(wurl, json.dumps(req_data))
+    #wurl= settings.API_URL + '/updateAdvertisement?id=' + id
+    response = requests.put(settings.API_URL + '/updateAdvertisement?id=' + id, json.dumps(req_data))
     return redirect(url_for('home'))
 
 @app.route('/ad/delete/<id>', methods=['POST'])
 def delete_ad_request(id):
-    wurl= settings.API_URL + '/deleteAdvertisement?id=' + id
-    response = requests.delete(wurl)
+    #wurl= settings.API_URL + '/deleteAdvertisement?id=' + id
+    response = requests.delete(settings.API_URL + '/deleteAdvertisement?id=' + id)
     if response.status_code == 200:
         return redirect(url_for('home'))
 
