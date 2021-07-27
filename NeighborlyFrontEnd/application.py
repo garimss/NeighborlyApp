@@ -49,7 +49,7 @@ def feeds():
 
 @app.route('/')
 def home():
-    response = requests.get(settings.API_URL + 'getAdvertisements')
+    #response = requests.get(settings.API_URL + 'getAdvertisements')
     response2 = urlopen(settings.API_URL + 'getPosts')
 
     
