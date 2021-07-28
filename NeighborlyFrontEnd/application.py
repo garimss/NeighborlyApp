@@ -101,7 +101,7 @@ def add_ad_request():
     print(str(id), ": id")
     #wurl = requests.get(settings.API_URL+'getAdvertisement?id='+id)
     
-    response = requests.post(settings.API_URL+'getAdvertisement?id='+str(id) , json.dumps(req_data))
+    response = requests.post(settings.API_URL+'getAdvertisement?id='+str(id) , json = req_data)
     return redirect(url_for('home'))
 
 @app.route('/ad/update/<id>', methods=['POST'])
@@ -118,7 +118,7 @@ def update_ad_request(id):
 
     print(str(id), ": id")
     #wurl= requests.get(settings.API_URL + 'updateAdvertisement?id='+ str(id))
-    response = requests.put(settings.API_URL + 'updateAdvertisement?id='+ str(id), json.dumps(req_data))
+    response = requests.put(settings.API_URL + 'updateAdvertisement?id='+ str(id), json=req_data)
     return redirect(url_for('home'))
 
 @app.route('/ad/delete/<id>', methods=['POST'])
