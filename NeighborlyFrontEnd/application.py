@@ -11,6 +11,7 @@ from flask import make_response
 from urllib.parse import urljoin
 from werkzeug.contrib.atom import AtomFeed
 from urllib.request import urlopen
+from urllib.parse import urlparse
 
 
 
@@ -69,20 +70,20 @@ def add_ad_view():
 
 @app.route('/ad/edit/<id>', methods=['GET'])
 def edit_ad_view(id):
-    addurl = urlopen(settings.API_URL + '/getAdvertisement?id=' + id)
+    addurl = urlopen(settings.API_URL + 'getAdvertisement?id=' + id)
     ad = json.loads(addurl.read())
     return render_template("edit_ad.html", ad=ad)
 
 
 @app.route('/ad/delete/<id>', methods=['GET'])
 def delete_ad_view(id):
-    response = urlopen(settings.API_URL + '/getAdvertisement?id=' + id)
+    response = urlopen(settings.API_URL + 'getAdvertisement?id=' + id)
     ad = json.loads(response.read())
     return render_template("delete_ad.html", ad=ad)
 
 @app.route('/ad/view/<id>', methods=['GET'])
 def view_ad_view(id):
-    response = urlopen(settings.API_URL + '/getAdvertisement?id=' + id)
+    response = urlopen(settings.API_URL + 'getAdvertisement?id=' + id)
     ad = json.loads(response.read())
     return render_template("view_ad.html", ad=ad)
 
@@ -97,9 +98,10 @@ def add_ad_request():
         'imgUrl': request.form['imgUrl'],
         'price': request.form['price']
     }
-    wurl = urlopen(settings.API_URL + '/getAdvertisement?id=' + id)
+    print(str(id, ": id"))
+    #wurl = requests.get(settings.API_URL+'getAdvertisement?id='+id)
     
-    response = requests.post(wurl, json.dumps(req_data))
+    response = requests.post(settings.API_URL+'getAdvertisement?id='+str(id) , json.dumps(req_data))
     return redirect(url_for('home'))
 
 @app.route('/ad/update/<id>', methods=['POST'])
@@ -114,15 +116,16 @@ def update_ad_request(id):
         'price': request.form['price']
     }
 
-
-    wurl= urlopen(settings.API_URL + '/updateAdvertisement?id=' + id)
-    response = requests.put(wurl, json.dumps(req_data))
+    print(str(id, ": id"))
+    #wurl= requests.get(settings.API_URL + 'updateAdvertisement?id='+ str(id))
+    response = requests.put(settings.API_URL + 'updateAdvertisement?id='+ str(id), json.dumps(req_data))
     return redirect(url_for('home'))
 
 @app.route('/ad/delete/<id>', methods=['POST'])
 def delete_ad_request(id):
-    wurl= urlopen(settings.API_URL + '/deleteAdvertisement?id=' + id)
-    response = requests.delete(wurl)
+    #wurl= requests.get(f"{settings.API_URL}/deleteAdvertisement?id={id}")
+    print(str(id, ": id"))
+    response = requests.delete(settings.API_URL + 'deleteAdvertisement?id='+ str(id))
     if response.status_code == 200:
         return redirect(url_for('home'))
 
